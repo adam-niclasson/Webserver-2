@@ -1,21 +1,3 @@
-let math1 = 18
+const labb = require('./labb')
 
-let math2 = 4
-
-console.log(math1, math2)
-
-math1 + math2
-
-console.log(math1 + math2)
-
-math1 * math2
-
-console.log(math1 * math2)
-
-math1 / math2
-
-console.log(math1 / math2)
-
-math1 - math2
-
-console.log(math1 - math2)
+labb.funk1("Niklas QuadKaKa")
