@@ -13,7 +13,14 @@ let prod = labb.multi(5, 2) //3
 
 console.log("Summan är: " + labb.add(1, 2) + " Differansen:" + labb.sub(1, 2) + " Produketen; " + labb.multi(5, 2))
 
-app.get('/', (req, res) => res.sendFile(__dirname + '\\client\\index.html'))
-app.get('/mainStyle', (req, res) => res.sendFile(clientDir + 'shit.css'))
+app.get('/', (req, res) => res.sendFile(__dirname + 'index.html'))
+
+app.get('/mainStyle', (req, res) => {
+    res.sendFile(clientDir + 'shit.css')
+})
+
+app.get('/ded', (req, res) => {
+    res.sendFile(clientDir + `ded.gif`)
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
