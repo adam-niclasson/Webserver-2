@@ -13,7 +13,7 @@ let prod = labb.multi(5, 2) //3
 
 console.log("Summan är: " + labb.add(1, 2) + " Differansen:" + labb.sub(1, 2) + " Produketen; " + labb.multi(5, 2))
 
-app.get('/', (req, res) => res.sendFile(__dirname + 'index.html'))
+app.get('/', (req, res) => res.sendFile(clientDir + 'index.html'))
 
 app.get('/mainStyle', (req, res) => {
     res.sendFile(clientDir + 'shit.css')
