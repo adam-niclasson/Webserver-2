@@ -23,4 +23,11 @@ app.get('/ded', (req, res) => {
     res.sendFile(clientDir + `ded.gif`)
 })
 
+app.post("/", (req, res) => {
+    let name = req.body.Username;
+    let password = req.body.Password;
+    Module.registerUser(name, password);
+    res.sendFile(clientDir + "indexlogin.html");
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
