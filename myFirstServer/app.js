@@ -3,6 +3,14 @@ const labb = require('./labb')
 const app = express()
 const port = 3000
 
+app.use(express.json())
+app.use(express.urlencoded())
+
+let name = "Adam Niclasson,"
+let no = "YOU SHALL NOT PASS!"
+let yes = "You may pass into mother russia"
+let age = 18
+
 const clientDir = __dirname + '\\client\\'
 
 //labb.funk1("Niklas QuadKaKa")
@@ -24,6 +32,8 @@ app.get('/ded', (req, res) => {
 })
 
 app.post("/", (req, res) => {
+    
+
     let name = req.body.Username;
     let password = req.body.Password;
     Module.registerUser(name, password);
