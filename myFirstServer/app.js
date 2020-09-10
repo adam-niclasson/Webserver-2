@@ -6,7 +6,7 @@ const port = 3000
 app.use(express.json())
 app.use(express.urlencoded())
 
-let name = "Adam Niclasson,"
+let name = "Adam"
 let no = "YOU SHALL NOT PASS!"
 let yes = "You may pass into mother russia"
 let age = 18
