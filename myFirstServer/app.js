@@ -6,10 +6,10 @@ const port = 3000
 app.use(express.json())
 app.use(express.urlencoded())
 
-let name = "Adam"
+
 let no = "YOU SHALL NOT PASS!"
 let yes = "You may pass into mother russia"
-let age = 18
+
 
 const clientDir = __dirname + '\\client\\'
 
@@ -31,13 +31,20 @@ app.get('/ded', (req, res) => {
     res.sendFile(clientDir + `ded.gif`)
 })
 
-app.post("/", (req, res) => {
-    
+app.post('/', function (req, res) {
+    res.send('POST request to the homepage')
 
-    let name = req.body.Username;
-    let password = req.body.Password;
-    Module.registerUser(name, password);
-    res.sendFile(clientDir + "indexlogin.html");
-});
+    if (req.body.fname < 17) {
+        console.log(no)
+    }
+    else if (req.body.age >= 17 && req.body.age <= 25) {
+        console.log(yes)
+    }
+    else {
+        console.log("You don't exist and your life is a lie.")
+    }
+
+    console.log("Hello, my name is " + name, "and I'm: " + age)
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
