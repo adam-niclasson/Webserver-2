@@ -34,17 +34,18 @@ app.get('/ded', (req, res) => {
 app.post('/', function (req, res) {
     res.send('POST request to the homepage')
 
-    if (req.body.fname < 17) {
+    if (req.body.age == 18 && req.body.fname === "Adam") {
+        console.log(yes)
+    }
+    else if (req.body.age != 18 && req.body.fname === "Adam") {
         console.log(no)
     }
-    else if (req.body.age >= 17 && req.body.age <= 25) {
-        console.log(yes)
+    else if (req.body.age == 18 && req.body.fname != "Adam") {
+        console.log(no)
     }
     else {
         console.log("You don't exist and your life is a lie.")
     }
-
-    console.log("Hello, my name is " + name, "and I'm: " + age)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
