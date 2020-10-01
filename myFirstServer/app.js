@@ -1,5 +1,6 @@
 const express = require('express')
 const databaseModule = require('./module.js')
+const personModule = require('./personmodule')
 const app = express()
 const port = 3000
 
@@ -8,8 +9,8 @@ const clientDir = __dirname + "\\client\\"
 app.use(express.json())
 app.use(express.urlencoded())
 
-let no = "YOU SHALL NOT PASS!"
-let yes = "You may pass into mother russia"
+const no = "YOU SHALL NOT PASS!"
+const yes = "You may pass into mother russia"
 
 
 //labb.funk1("Niklas QuadKaKa")
@@ -33,8 +34,6 @@ app.get('/ded', (req, res) => {
 })
 
 app.post('/', function (req, res) {
-    var adam = new Person({ name: req.body.name, age: req.body.age })
-    res.send('POST request to the homepage')
 
     if (req.body.age == 18 && req.body.fname === "Adam") {
         console.log(yes)
@@ -49,11 +48,10 @@ app.post('/', function (req, res) {
         console.log("You don't exist and your life is a lie.")
     }
 
-    console.log(req.body.name)
-    console.log(req.body.email)
-  
-    databaseModule.storePerson(req.body.name, req.body.email, req.body.age)
-  
+    let person = personModule.createPerson(req.body.fname, req.body.age)
+
+    databaseModule.storeElement(person)
+
     res.redirect('/')
 })
 
