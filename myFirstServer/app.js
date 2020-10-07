@@ -25,7 +25,7 @@ const yes = "You may pass into mother russia"
 // console.log("Summan är: " + labb.add(1, 2) + " Differansen:" + labb.sub(1, 2) + " Produketen; " + labb.multi(5, 2))
 
 app.get('/', (req, res) => {
-    res.render("pages/index.ejs")
+    res.render("pages/index.ejs", { name: "" })
 })
 
 app.get('/mainStyle', (req, res) => {
@@ -55,7 +55,7 @@ app.post('/', function (req, res) {
 
     databaseModule.storeElement(person)
 
-    res.redirect('/')
+    res.render("pages/index.ejs", { name: req.body.fname })
 })
 
 app.listen(port, () => {
