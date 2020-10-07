@@ -1,4 +1,5 @@
 const express = require('express')
+const ejs = require('ejs')
 const databaseModule = require('./module.js')
 const personModule = require('./personmodule')
 const app = express()
@@ -8,6 +9,8 @@ const clientDir = __dirname + "\\client\\"
 
 app.use(express.json())
 app.use(express.urlencoded())
+
+app.set('view-engine', 'ejs')
 
 const no = "YOU SHALL NOT PASS!"
 const yes = "You may pass into mother russia"
@@ -22,7 +25,7 @@ const yes = "You may pass into mother russia"
 // console.log("Summan är: " + labb.add(1, 2) + " Differansen:" + labb.sub(1, 2) + " Produketen; " + labb.multi(5, 2))
 
 app.get('/', (req, res) => {
-    res.sendFile(clientDir + 'index.html')
+    res.render("pages/index.ejs")
 })
 
 app.get('/mainStyle', (req, res) => {
