@@ -4,12 +4,11 @@ mongoose.connect('mongodb://localhost/webbserver2', { useNewUrlParser: true, use
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-    // we're connected!
+  // we're connected!
 });
 
 exports.storeElement = (element) => {
-    
-     element.save((result)=>{
-       console.log(result)
-     })
- }
+  element.save((result) => {
+    console.log(result)
+  })
+}

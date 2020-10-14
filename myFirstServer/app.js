@@ -7,6 +7,7 @@ const port = 3000
 
 const clientDir = __dirname + "\\client\\"
 
+app.use(express.static(clientDir))
 app.use(express.json())
 app.use(express.urlencoded())
 
@@ -28,13 +29,13 @@ app.get('/', (req, res) => {
     res.render("pages/index.ejs", { name: "" })
 })
 
-app.get('/mainStyle', (req, res) => {
-    res.sendFile(clientDir + 'shit.css')
-})
+// app.get('/mainStyle', (req, res) => {
+//     res.sendFile(clientDir + 'shit.css')
+// })
 
-app.get('/ded', (req, res) => {
-    res.sendFile(clientDir + `ded.gif`)
-})
+// app.get('/ded', (req, res) => {
+//     res.sendFile(clientDir + `ded.gif`)
+// })
 
 app.post('/', function (req, res) {
 
@@ -55,7 +56,7 @@ app.post('/', function (req, res) {
 
     databaseModule.storeElement(person)
 
-    res.render("pages/index.ejs", { name: req.body.fname })
+    res.render("pages/index.ejs", { name: "" + req.body.fname })
 })
 
 app.listen(port, () => {
