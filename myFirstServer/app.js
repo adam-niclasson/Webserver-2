@@ -16,26 +16,12 @@ app.set('view-engine', 'ejs')
 const no = "YOU SHALL NOT PASS!"
 const yes = "You may pass into mother russia"
 
-
-//labb.funk1("Niklas QuadKaKa")
-
-// let sum = labb.add(1, 2) //3
-// let dif = labb.sub(1, 2) //3
-// let prod = labb.multi(5, 2) //3
-
-// console.log("Summan är: " + labb.add(1, 2) + " Differansen:" + labb.sub(1, 2) + " Produketen; " + labb.multi(5, 2))
-
 app.get('/', (req, res) => {
     res.render("pages/index.ejs", { name: "" })
 })
-
-// app.get('/mainStyle', (req, res) => {
-//     res.sendFile(clientDir + 'shit.css')
-// })
-
-// app.get('/ded', (req, res) => {
-//     res.sendFile(clientDir + `ded.gif`)
-// })
+app.get('/msg', (req, res) => {
+    res.render("pages/messages.ejs", { name: "" })
+})
 
 app.post('/', function (req, res) {
 
@@ -57,6 +43,14 @@ app.post('/', function (req, res) {
     databaseModule.storeElement(person)
 
     res.render("pages/index.ejs", { name: "" + req.body.fname })
+})
+app.post('/message', function (req, res) {
+
+    let message = messageModel.createMessage(req.body.message, req.body.name)
+    databaseModule.storeElement(message)
+
+    res.render('pages/messages.ejs')
+
 })
 
 app.listen(port, () => {
