@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(119, 11, 190);
+}
+
+.messages {
+  width: 500px;
+  height: auto;
+  border: 1px solid black;
+}
