@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="yikes.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="yikes.css">
     <title>Document</title>
-  </head>
-  <body>
-    <div class="messages">hajhaj</div>
-  </body>
+</head>
+<body>
+    <form action="/message" method="post">
+        <input type="email" name="email" placeholder="example@email.com">
+        <input type="text" name="message" placeholder="message">
+        <button type="submit">Okej</button>
+    </form>
+    <% for( let i = 0; i < messages.length; i++ ) { %>
+        <h1><%- messages[i].message %>  </h1>
+    <% } %>
+</body>
 </html>

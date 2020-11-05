@@ -5,12 +5,17 @@ const messageSchema = new mongoose.Schema({
     message: String
 });
 
-const message = mongoose.model('message', messageSchema);
+const Message = mongoose.model('Message', messageSchema);
 
-exports.createMessage = (name, message) => {
-    let message = new message({
+exports.createMessage = (name, text) => {
+    let message = new Message({
         name: name,
-        message: message
+        message: text
     })
     return message;
+}
+
+exports.getAllMessages = async () => {
+    let messages = await Message.find({})
+    return messages
 }

@@ -2,6 +2,7 @@ const express = require('express')
 const ejs = require('ejs')
 const databaseModule = require('./module.js')
 const personModule = require('./personmodule')
+const messageModel = require('./messageModel')
 const app = express()
 const port = 3000
 
@@ -18,9 +19,6 @@ const yes = "You may pass into mother russia"
 
 app.get('/', (req, res) => {
     res.render("pages/index.ejs", { name: "" })
-})
-app.get('/msg', (req, res) => {
-    res.render("pages/messages.ejs", { name: "" })
 })
 
 app.post('/', function (req, res) {
@@ -44,13 +42,19 @@ app.post('/', function (req, res) {
 
     res.render("pages/index.ejs", { name: "" + req.body.fname })
 })
+
 app.post('/message', function (req, res) {
 
-    let message = messageModel.createMessage(req.body.message, req.body.name)
+    let message = messageModel.createMessage(req.body.name, req.body.message)
     databaseModule.storeElement(message)
 
-    res.render('pages/messages.ejs')
+    res.redirect('/messages')
 
+})
+
+app.get('/messages', async (req, res) => {
+    const posts = await messageModel.getAllMessages()
+    res.render("pages/messages.ejs", { messages: posts.reverse()})
 })
 
 app.listen(port, () => {
