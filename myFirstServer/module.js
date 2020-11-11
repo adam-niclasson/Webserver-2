@@ -7,8 +7,6 @@ db.once('open', function () {
   // we're connected!
 });
 
-exports.storeElement = (element) => {
-  element.save((result) => {
-    console.log(result)
-  })
+exports.storeElement = async (element) => {
+  await element.save()
 }
